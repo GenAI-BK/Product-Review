@@ -32,8 +32,8 @@ def main():
         st.session_state.generate_clicked = True
         
         data = query_data(selected_product)
-        
-        st.write(data)
+        answer=response(data)
+        st.write(answer)
       
         if st.session_state.show_raw_data:
             st.write("**Raw Data:**")
