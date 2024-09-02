@@ -194,15 +194,15 @@ def main():
             </body>
             </html>
             """
-        if not os.path.exists(os.path.join(extract_to, "wkhtmltopdf.exe")):
-            # Extract the executable
-            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                zip_ref.extractall(extract_to)
-        config = pdfkit.configuration(wkhtmltopdf=os.path.join(extract_to, "wkhtmltopdf.exe"))
+        # if not os.path.exists(os.path.join(extract_to, "wkhtmltopdf.exe")):
+        #     # Extract the executable
+        #     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        #         zip_ref.extractall(extract_to), configuration=config
+        # config = pdfkit.configuration(wkhtmltopdf=os.path.join(extract_to, "wkhtmltopdf.exe"))
         template = Template(html_template)
         html_out = template.render(parsed_dict=parsed_dict)
         print(html_out)
-        pdf = pdfkit.from_string(html_out, False, configuration=config)
+        pdf = pdfkit.from_string(html_out, False)
         print(pdf)
         st.download_button(
             label="Download Full Report as PDF",
