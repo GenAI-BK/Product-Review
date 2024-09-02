@@ -1,6 +1,6 @@
 import sqlite3
 import pandas as pd
-DATABASE_PATH = 'D:/OneDrive - Beyond Key Systems Pvt. Ltd/Product Review System/supply_database.db'
+DATABASE_PATH = 'supply_database.db'
 
 def show_data(product_name):
     conn = sqlite3.connect(DATABASE_PATH)
