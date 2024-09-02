@@ -8,9 +8,9 @@ import zipfile
 import subprocess
 import os
 
-zip_path="C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.zip"
+zip_path="wkhtmltopdf.zip"
 # List of product names
-extract_to="D:/OneDrive - Beyond Key Systems Pvt. Ltd/Product Review System/Product-Review"
+extract_to="bin/"
 lst = lst_product()
 
 # Function to sanitize text
