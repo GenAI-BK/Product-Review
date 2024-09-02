@@ -4,8 +4,13 @@ from llm import response
 import re
 import pdfkit
 from jinja2 import Template
+import zipfile
+import subprocess
+import os
 
+zip_path="C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.zip"
 # List of product names
+extract_to="D:/OneDrive - Beyond Key Systems Pvt. Ltd/Product Review System/Product-Review"
 lst = lst_product()
 
 # Function to sanitize text
@@ -189,7 +194,11 @@ def main():
             </body>
             </html>
             """
-        config = pdfkit.configuration(wkhtmltopdf=r"C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe")
+        if not os.path.exists(os.path.join(extract_to, "wkhtmltopdf.exe")):
+            # Extract the executable
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(extract_to)
+        config = pdfkit.configuration(wkhtmltopdf=os.path.join(extract_to, "wkhtmltopdf.exe"))
         template = Template(html_template)
         html_out = template.render(parsed_dict=parsed_dict)
         print(html_out)
